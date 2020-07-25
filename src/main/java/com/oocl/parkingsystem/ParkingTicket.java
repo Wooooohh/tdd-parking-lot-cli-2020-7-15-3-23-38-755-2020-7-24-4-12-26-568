@@ -4,8 +4,11 @@ public class ParkingTicket {
 
   private String ticketId;
 
-  public ParkingTicket(String carId) {
+  private int parkingLotId;
+
+  public ParkingTicket(String carId, int parkingLotId) {
     ticketId = carId + "park";
+    this.parkingLotId = parkingLotId;
   }
 
   public String getTicketId() {
@@ -14,5 +17,13 @@ public class ParkingTicket {
 
   public void setTicketId(String ticketId) {
     this.ticketId = ticketId;
+  }
+
+  public int getParkingLotId() {
+    return parkingLotId;
+  }
+
+  public void setParkingLotId(int parkingLotId) {
+    this.parkingLotId = parkingLotId;
   }
 }

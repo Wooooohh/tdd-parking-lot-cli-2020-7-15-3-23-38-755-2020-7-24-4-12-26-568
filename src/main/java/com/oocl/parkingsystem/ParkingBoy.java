@@ -1,6 +1,7 @@
 package com.oocl.parkingsystem;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
@@ -9,14 +10,17 @@ public class ParkingBoy {
 
   int capacity = 10;
 
-    public ParkingBoy() {
+  private List<ParkingLot> parkingLots;
+
+  public ParkingBoy(List<ParkingLot> parkingLots) {
+    this.parkingLots = parkingLots;
     carsMap = new HashMap<>();
   }
 
   public ParkingTicket park(Car car) {
-    if (carsMap.size() < 10) {
+    if (carsMap.size() < capacity) {
       String carId = car.getCarId();
-      ParkingTicket parkingTicket = new ParkingTicket(carId);
+      ParkingTicket parkingTicket = new ParkingTicket(carId,0);
       String ticketId = parkingTicket.getTicketId();
       carsMap.put(ticketId, carId);
       return parkingTicket;
@@ -51,7 +55,7 @@ public class ParkingBoy {
     }
 
     public String queryErrorMessage(Car car) {
-        if(carsMap.size() >= 10)
+        if(!(carsMap.size() < capacity))
             return "Not enough position.";
         return null;
     }
