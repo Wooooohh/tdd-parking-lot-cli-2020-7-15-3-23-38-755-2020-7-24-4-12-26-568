@@ -19,21 +19,20 @@ public class ParkingBoy {
     return parkingTicket;
   }
 
-  public ParkingTicket[] park(Car[] cars){
-      ParkingTicket[] tickets = new ParkingTicket[cars.length];
-      for(int i = 0; i < cars.length; i++){
-          tickets[i] = this.park(cars[i]);
-      }
-      return tickets;
+  public ParkingTicket[] park(Car[] cars) {
+    ParkingTicket[] tickets = new ParkingTicket[cars.length];
+    for (int i = 0; i < cars.length; i++) {
+      tickets[i] = this.park(cars[i]);
+    }
+    return tickets;
   }
 
   public Car fetch(ParkingTicket parkingTicket) {
+    if (parkingTicket == null) return null;
     String ticketId = parkingTicket.getTicketId();
     String carId = carsMap.get(ticketId);
-    if(carId == null)
-        return null;
+    if (carId == null) return null;
     Car car = new Car(carId);
     return car;
   }
-
 }
