@@ -6,9 +6,12 @@ public class ParkingTicket {
 
   private int parkingLotId;
 
-  public ParkingTicket(String carId, int parkingLotId) {
+  private int position;
+
+  public ParkingTicket(String carId, int parkingLotId, int position) {
     ticketId = carId + "park" + parkingLotId;
     this.parkingLotId = parkingLotId;
+    this.position = position;
   }
 
   public String getTicketId() {
@@ -25,5 +28,13 @@ public class ParkingTicket {
 
   public void setParkingLotId(int parkingLotId) {
     this.parkingLotId = parkingLotId;
+  }
+
+  public int getPosition() {
+    return position;
+  }
+
+  public void setPosition(int position) {
+    this.position = position;
   }
 }

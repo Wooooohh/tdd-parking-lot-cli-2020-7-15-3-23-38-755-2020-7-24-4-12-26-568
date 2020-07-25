@@ -25,7 +25,7 @@ public class ParkingBoy {
       for(ParkingLot parkingLot : parkingLots){
         if (!parkingLot.isFull()) {
           String carId = car.getCarId();
-          ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId());
+          ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), 1);
           String ticketId = parkingTicket.getTicketId();
           carsMap.put(ticketId, carId);
           parkingLot.putCar(car);
