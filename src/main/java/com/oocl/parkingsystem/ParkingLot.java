@@ -44,4 +44,8 @@ public class ParkingLot {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public int getPosition() {
+        return cars.size();
+    }
 }

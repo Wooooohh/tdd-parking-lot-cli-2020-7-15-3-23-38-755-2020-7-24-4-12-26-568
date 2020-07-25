@@ -247,7 +247,6 @@ public class ParkingBoyTest {
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car1 = new Car("H001");
     Car car2 = new Car("H002");
-    parkingBoy.park(car1);
 
     // when
     ParkingTicket parkingTicket1 = parkingBoy.park(car1);
