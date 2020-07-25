@@ -52,4 +52,24 @@ public class ParkingBoyTest {
     // then
     assertEquals(car2.getCarId(), result.getCarId());
   }
+
+  @Test
+  public void should_return_multiple_parking_ticket_when_park_given_multiple_carand_parking_boy() {
+    // given
+    ParkingBoy parkingBoy = new ParkingBoy();
+    Car car1 = new Car("H001");
+    Car car2 = new Car("H002");
+    Car[] cars = {car1, car2};
+    ParkingTicket ticket1 = new ParkingTicket(car1.getCarId());
+    ParkingTicket ticket2 = new ParkingTicket(car2.getCarId());
+
+    ParkingTicket[] tickets = {ticket1, ticket2};
+    // when
+    ParkingTicket[] result = parkingBoy.park(cars);
+
+    // then
+    for (int i = 0; i < cars.length; i++) {
+      assertEquals(tickets[i].getTicketId(), result[i].getTicketId());
+    }
+  }
 }

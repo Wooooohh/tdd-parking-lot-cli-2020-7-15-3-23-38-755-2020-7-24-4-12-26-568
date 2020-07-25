@@ -19,10 +19,16 @@ public class ParkingBoy {
     return parkingTicket;
   }
 
+  public ParkingTicket[] park(Car[] cars){
+      ParkingTicket[] tickets = new ParkingTicket[cars.length];
+      return tickets;
+  }
+
   public Car fetch(ParkingTicket parkingTicket) {
     String ticketId = parkingTicket.getTicketId();
     String carId = carsMap.get(ticketId);
     Car car = new Car(carId);
     return car;
   }
+
 }
