@@ -49,4 +49,8 @@ public class ParkingBoy {
             return "Unrecognized parking ticket.";
         return null;
     }
+
+    public String queryErrorMessage(Car car) {
+        return null;
+    }
 }
