@@ -7,16 +7,21 @@ public class ParkingBoy {
 
   Map<String, String> carsMap;
 
-  public ParkingBoy() {
+  int capacity = 10;
+
+    public ParkingBoy() {
     carsMap = new HashMap<>();
   }
 
   public ParkingTicket park(Car car) {
-    String carId = car.getCarId();
-    ParkingTicket parkingTicket = new ParkingTicket(carId);
-    String ticketId = parkingTicket.getTicketId();
-    carsMap.put(ticketId, carId);
-    return parkingTicket;
+    if (carsMap.size() < 10) {
+      String carId = car.getCarId();
+      ParkingTicket parkingTicket = new ParkingTicket(carId);
+      String ticketId = parkingTicket.getTicketId();
+      carsMap.put(ticketId, carId);
+      return parkingTicket;
+    }
+    return null;
   }
 
   public ParkingTicket[] park(Car[] cars) {

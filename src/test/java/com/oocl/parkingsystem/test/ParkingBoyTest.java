@@ -99,32 +99,31 @@ public class ParkingBoyTest {
     assertEquals(null, car);
   }
 
-    @Test
-    public void should_return_null_when_fetch_given_used_parking_ticket_and_parking_boy() {
-        // given
-        ParkingBoy parkingBoy = new ParkingBoy();
-        Car car = new Car("H001");
-        ParkingTicket ticket = parkingBoy.park(car);
-        parkingBoy.fetch(ticket);
-        // when
-        Car result = parkingBoy.fetch(ticket);
+  @Test
+  public void should_return_null_when_fetch_given_used_parking_ticket_and_parking_boy() {
+    // given
+    ParkingBoy parkingBoy = new ParkingBoy();
+    Car car = new Car("H001");
+    ParkingTicket ticket = parkingBoy.park(car);
+    parkingBoy.fetch(ticket);
+    // when
+    Car result = parkingBoy.fetch(ticket);
 
-        // then
-        assertEquals(null, result);
+    // then
+    assertEquals(null, result);
+  }
+
+  @Test
+  public void should_return_null_when_park_given_car_and_parking_boy_and_10_cars_in_parking_lot() {
+    // given
+    ParkingBoy parkingBoy = new ParkingBoy();
+    for (int i = 0; i < 10; i++) {
+      parkingBoy.park(new Car("H00" + i));
     }
+    // when
+    ParkingTicket parkingTicket = parkingBoy.park(new Car("H0011"));
 
-    @Test
-    public void should_return_null_when_park_given_car_and_parking_boy_and_10_cars_in_parking_lot() {
-        // given
-        ParkingBoy parkingBoy = new ParkingBoy();
-        for(int i = 0; i < 10; i++){
-            parkingBoy.park(new Car("H00" + i));
-        }
-        // when
-        ParkingTicket parkingTicket = parkingBoy.park(new Car("H0011"));
-
-
-        // then
-        assertEquals(null, parkingTicket);
-    }
+    // then
+    assertEquals(null, parkingTicket);
+  }
 }
