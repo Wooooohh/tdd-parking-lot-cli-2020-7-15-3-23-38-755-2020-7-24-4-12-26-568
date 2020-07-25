@@ -22,4 +22,17 @@ public class ParkingBoyTest {
         assertNotEquals(null, result);
     }
 
+    @Test
+    public void should_return_car_when_when_fetch_given_parking_ticket_and_parking_boy(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingTicket parkingTicket = new ParkingTicket();
+
+        //when
+        Car result = parkingBoy.fetch(parkingTicket);
+
+        //then
+        assertNotEquals(null, result);
+    }
+
 }
