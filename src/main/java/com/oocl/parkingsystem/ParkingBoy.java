@@ -30,6 +30,8 @@ public class ParkingBoy {
   public Car fetch(ParkingTicket parkingTicket) {
     String ticketId = parkingTicket.getTicketId();
     String carId = carsMap.get(ticketId);
+    if(carId == null)
+        return null;
     Car car = new Car(carId);
     return car;
   }
