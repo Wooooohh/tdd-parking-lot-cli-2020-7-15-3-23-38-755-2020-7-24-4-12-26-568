@@ -8,22 +8,30 @@ public class ParkingBoy {
 
   Map<String, String> carsMap;
 
-  int capacity = 10;
+  int totalCapacity;
 
   private List<ParkingLot> parkingLots;
 
   public ParkingBoy(List<ParkingLot> parkingLots) {
     this.parkingLots = parkingLots;
     carsMap = new HashMap<>();
+    for(ParkingLot parkingLot : parkingLots){
+      totalCapacity += parkingLot.getCapacity();
+    }
   }
 
   public ParkingTicket park(Car car) {
-    if (carsMap.size() < capacity) {
-      String carId = car.getCarId();
-      ParkingTicket parkingTicket = new ParkingTicket(carId,1);
-      String ticketId = parkingTicket.getTicketId();
-      carsMap.put(ticketId, carId);
-      return parkingTicket;
+    if (carsMap.size() < totalCapacity) {
+      for(ParkingLot parkingLot : parkingLots){
+        if (!parkingLot.isFull()) {
+          String carId = car.getCarId();
+          ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId());
+          String ticketId = parkingTicket.getTicketId();
+          carsMap.put(ticketId, carId);
+          parkingLot.putCar(car);
+          return parkingTicket;
+        }
+      }
     }
     return null;
   }
@@ -55,7 +63,7 @@ public class ParkingBoy {
     }
 
     public String queryErrorMessage(Car car) {
-        if(!(carsMap.size() < capacity))
+        if(!(carsMap.size() < totalCapacity))
             return "Not enough position.";
         return null;
     }

@@ -19,6 +19,7 @@ public class ParkingBoyTest {
     // given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
     List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
     Car car = new Car("H001");
@@ -35,8 +36,8 @@ public class ParkingBoyTest {
     // given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
     List<ParkingLot> parkingLots = new ArrayList<>();
-    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     ParkingTicket parkingTicket = parkingBoy.park(new Car("H001"));
 
     // when
@@ -52,8 +53,8 @@ public class ParkingBoyTest {
     // given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
     List<ParkingLot> parkingLots = new ArrayList<>();
-    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car1 = new Car("H001");
     Car car2 = new Car("H002");
     ParkingTicket ticket1 = parkingBoy.park(car1);
@@ -71,13 +72,13 @@ public class ParkingBoyTest {
     // given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
     List<ParkingLot> parkingLots = new ArrayList<>();
-    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car1 = new Car("H001");
     Car car2 = new Car("H002");
     Car[] cars = {car1, car2};
     ParkingTicket ticket1 = new ParkingTicket(car1.getCarId(), 1);
-    ParkingTicket ticket2 = new ParkingTicket(car2.getCarId(), 2);
+    ParkingTicket ticket2 = new ParkingTicket(car2.getCarId(), 1);
 
     ParkingTicket[] tickets = {ticket1, ticket2};
     // when
@@ -213,22 +214,23 @@ public class ParkingBoyTest {
     assertEquals("Not enough position.", result);
   }
 
-  @Test
-  public void
-      should_return_ticket_with_lot_information_when_park_given_parking_boy_and_car_and_two_parking_lot_and_lot1_is_not_full() {
-    // given
-    ParkingLot parkingLot1 = new ParkingLot(1, 10);
-    ParkingLot parkingLot2 = new ParkingLot(2, 10);
-    List<ParkingLot> parkingLots = new ArrayList<>();
-    parkingLots.add(parkingLot1);
-    parkingLots.add(parkingLot2);
-    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-    Car car = new Car("H001");
+    @Test
+    public void
+    should_return_ticket_with_lot_information_when_park_given_parking_boy_and_car_and_two_parking_lot_and_lot1_is_full() {
+        // given
+        ParkingLot parkingLot1 = new ParkingLot(1, 1);
+        ParkingLot parkingLot2 = new ParkingLot(2, 10);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car1 = new Car("H001");
+        Car car2 = new Car("H002");
+        parkingBoy.park(car1);
+        // when
+        ParkingTicket result = parkingBoy.park(car2);
 
-    // when
-    ParkingTicket result = parkingBoy.park(car);
-
-    // then
-    assertEquals(1, result.getParkingLotId());
-  }
+        // then
+        assertEquals(2, result.getParkingLotId());
+    }
 }

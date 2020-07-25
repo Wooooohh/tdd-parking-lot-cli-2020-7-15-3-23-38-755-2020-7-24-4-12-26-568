@@ -7,7 +7,7 @@ public class ParkingTicket {
   private int parkingLotId;
 
   public ParkingTicket(String carId, int parkingLotId) {
-    ticketId = carId + "park";
+    ticketId = carId + "park" + parkingLotId;
     this.parkingLotId = parkingLotId;
   }
 
