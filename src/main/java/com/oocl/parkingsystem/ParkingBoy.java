@@ -31,6 +31,7 @@ public class ParkingBoy {
     if (parkingTicket == null) return null;
     String ticketId = parkingTicket.getTicketId();
     String carId = carsMap.get(ticketId);
+    carsMap.remove(ticketId);
     if (carId == null) return null;
     Car car = new Car(carId);
     return car;
