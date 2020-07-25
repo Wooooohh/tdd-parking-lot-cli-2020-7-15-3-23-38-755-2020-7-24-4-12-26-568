@@ -43,10 +43,10 @@ public class ParkingBoy {
   }
 
     public String queryErrorMessage(ParkingTicket parkingTicket) {
-        String errorMessage = null;
-        if(!carsMap.containsKey(parkingTicket.getTicketId())){
-            errorMessage = "Unrecognized parking ticket.";
-        }
-        return errorMessage;
+        if(parkingTicket == null)
+            return "Please provide your parking ticket.";
+        if(!carsMap.containsKey(parkingTicket.getTicketId()))
+            return "Unrecognized parking ticket.";
+        return null;
     }
 }
