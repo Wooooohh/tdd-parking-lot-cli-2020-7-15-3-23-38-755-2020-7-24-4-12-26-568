@@ -8,6 +8,6 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return new Car();
+        return new Car("H001");
     }
 }
