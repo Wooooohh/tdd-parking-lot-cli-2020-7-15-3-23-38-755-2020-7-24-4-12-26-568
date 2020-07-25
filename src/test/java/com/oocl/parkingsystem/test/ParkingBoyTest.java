@@ -257,4 +257,26 @@ public class ParkingBoyTest {
     assertEquals(2, parkingTicket2.getPosition());
   }
 
+  @Test
+  public void
+  should_return_sequentially_ticket_with_lot_information_and_position_information_when_park_given_parking_boy_and_car_and_two_parking_lot_and_lot1_is_full() {
+    // given
+    ParkingLot parkingLot1 = new ParkingLot(1, 1);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+    Car car1 = new Car("H001");
+    Car car2 = new Car("H002");
+
+    // when
+    ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+    ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+
+    // then
+    assertEquals(1, parkingTicket1.getPosition());
+    assertEquals(1, parkingTicket2.getPosition());
+  }
+
 }
