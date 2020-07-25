@@ -41,4 +41,9 @@ public class ParkingBoy {
     Car car = new Car(carId);
     return car;
   }
+
+    public String queryErrorMessage(ParkingTicket parkingTicket) {
+
+        return null;
+    }
 }
