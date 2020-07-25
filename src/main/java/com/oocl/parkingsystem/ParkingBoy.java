@@ -20,7 +20,7 @@ public class ParkingBoy {
   public ParkingTicket park(Car car) {
     if (carsMap.size() < capacity) {
       String carId = car.getCarId();
-      ParkingTicket parkingTicket = new ParkingTicket(carId,0);
+      ParkingTicket parkingTicket = new ParkingTicket(carId,1);
       String ticketId = parkingTicket.getTicketId();
       carsMap.put(ticketId, carId);
       return parkingTicket;
