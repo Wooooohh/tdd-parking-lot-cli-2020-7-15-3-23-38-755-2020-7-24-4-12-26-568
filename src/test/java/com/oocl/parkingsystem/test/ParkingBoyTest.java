@@ -54,7 +54,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  public void should_return_multiple_parking_ticket_when_park_given_multiple_carand_parking_boy() {
+  public void should_return_multiple_parking_ticket_when_park_given_multiple_car_and_parking_boy() {
     // given
     ParkingBoy parkingBoy = new ParkingBoy();
     Car car1 = new Car("H001");

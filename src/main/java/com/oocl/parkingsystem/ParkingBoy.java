@@ -21,6 +21,9 @@ public class ParkingBoy {
 
   public ParkingTicket[] park(Car[] cars){
       ParkingTicket[] tickets = new ParkingTicket[cars.length];
+      for(int i = 0; i < cars.length; i++){
+          tickets[i] = this.park(cars[i]);
+      }
       return tickets;
   }
 
