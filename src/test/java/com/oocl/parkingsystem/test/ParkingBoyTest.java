@@ -112,4 +112,19 @@ public class ParkingBoyTest {
         // then
         assertEquals(null, result);
     }
+
+    @Test
+    public void should_return_null_when_park_given_car_and_parking_boy_and_10_cars_in_parking_lot() {
+        // given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for(int i = 0; i < 10; i++){
+            parkingBoy.park(new Car("H00" + i));
+        }
+        // when
+        ParkingTicket parkingTicket = parkingBoy.park(new Car("H0011"));
+
+
+        // then
+        assertEquals(null, parkingTicket);
+    }
 }
