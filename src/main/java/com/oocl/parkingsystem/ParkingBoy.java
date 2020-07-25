@@ -51,6 +51,8 @@ public class ParkingBoy {
     }
 
     public String queryErrorMessage(Car car) {
+        if(carsMap.size() >= 10)
+            return "Not enough position.";
         return null;
     }
 }
