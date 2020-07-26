@@ -360,4 +360,26 @@ public class ParkingBoyTest {
     //then
     assertEquals(2, result.getParkingLotId());
   }
+
+  @Test
+  public void should_return_ticket_with_lot1_when_park_given_super_smart_parking_boy_and_car_and_two_parking_lot_and_lot1_rate_equals_lot2_rate(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
+    Car car1 = new Car("H001");
+    Car car2 = new Car("H002");
+    SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+    superSmartParkingBoy.park(car1);
+    superSmartParkingBoy.park(car2);
+    Car car3 = new Car("H003");
+
+    //when
+    ParkingTicket result = superSmartParkingBoy.park(car3);
+
+    //then
+    assertEquals(1, result.getParkingLotId());
+  }
 }
