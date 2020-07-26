@@ -395,4 +395,19 @@ public class ParkingBoyTest {
     //then
     assertEquals(1, result);
   }
+
+  @Test
+  public void should_return_ticket_when_call_boy_park_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_car(){
+    //given
+    ParkingLotManager parkingLotManager = new ParkingLotManager();
+    ParkingBoy parkingBoy = new ParkingBoy();
+    parkingLotManager.addParkingBoy(parkingBoy);
+    Car car = new Car("H001");
+
+    //when
+    ParkingTicket result = parkingLotManager.callBoyParkCar(car);
+
+    //then
+    assertNotEquals(null, result);
+  }
 }

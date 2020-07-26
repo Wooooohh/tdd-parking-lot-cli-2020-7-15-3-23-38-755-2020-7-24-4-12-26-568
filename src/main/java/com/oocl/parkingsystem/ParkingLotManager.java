@@ -19,4 +19,8 @@ public class ParkingLotManager{
         parkingBoys.add(parkingBoy);
         return parkingBoys.size();
     }
+
+    public ParkingTicket callBoyParkCar(Car car) {
+        return null;
+    }
 }
