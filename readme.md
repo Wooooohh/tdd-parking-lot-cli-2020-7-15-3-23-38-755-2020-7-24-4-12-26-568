@@ -72,6 +72,7 @@ AC2: When the customer does not provide a ticket when fetching a  car. The error
 
 AC3: When the parking boy attempt to park a car into a parking lot without a position. The error message should be "Not enough position."
 
+# test case
 9. should_return_error_message_unrecognized_parking_ticket_when_query_error_message_given_wrong_ticket_and_parking_boy
 given : parking boy , wrong parking ticket
 when : query error message
@@ -95,6 +96,7 @@ AC1. The parking boy is not that clever, and he will always park cars sequential
 
 AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
 
+# test case
 12. should_return_ticket_with_lot_information_when_park_given_parking_boy_and_car_and_two_parking_lot_and_lot1_is_full
 given : parking boy, car, two parking lot(lot1 is full)
 when : park
@@ -126,6 +128,7 @@ AC1. The smart parking boy will always park cars to the parking lot which contai
 
 AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
 
+# test case
 16.should_return_ticket_with_right_lot_information_when_park_given_smart_parking_boy_and_car_and_two_parking_lot_and_one_car_in_lot1
 given : smart parking boy, car, two parking lot(one car in lot1, same capacity)
 when : park
@@ -146,6 +149,7 @@ AC1. The super smart parking boy will always park cars to the parking lot which 
 
 AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
 
+# test case
 rate = (positions available / capacity)
 18.should_return_ticket_with_lot2_when_park_given_super_smart_parking_boy_and_car_and_two_parking_lot_and_lot2_rate_is_large
 given : smart parking boy, car, two parking lot(lot2's rate is large)
@@ -169,6 +173,7 @@ AC2. The parking lot service manager can also manage parking lots. And (s)he can
 
 AC3. If the manager tells the parking boy to park or fetch the car, then the manager should be able to display the error message to the customer if the parking boy failed to do the operation.
 
+# test case
 20.should_return_parking_boy_id_when_add_parking_boy_given_manager_and_parking_boy
 given: parking boy, manager
 when: add parking boy
