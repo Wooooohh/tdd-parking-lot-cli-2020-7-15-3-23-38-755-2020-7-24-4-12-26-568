@@ -382,4 +382,17 @@ public class ParkingBoyTest {
     //then
     assertEquals(1, result.getParkingLotId());
   }
+
+  @Test
+  public void should_return_parkingboy_id_when_add_parking_boy_given_manager_and_parking_boy(){
+    //given
+    ParkingLotManager parkingLotManager = new ParkingLotManager();
+    ParkingBoy parkingBoy = new ParkingBoy();
+
+    //when
+    int result = parkingLotManager.addParkingBoy(parkingBoy);
+
+    //then
+    assertEquals(1, result);
+  }
 }

@@ -1,5 +1,6 @@
 package com.oocl.parkingsystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,10 @@ public class ParkingBoy {
   protected int totalCapacity;
 
   protected List<ParkingLot> parkingLots;
+
+  public ParkingBoy(){
+    parkingLots = new ArrayList<>();
+  }
 
   public ParkingBoy(List<ParkingLot> parkingLots) {
     this.parkingLots = parkingLots;
@@ -45,7 +50,7 @@ public class ParkingBoy {
     String carId = carsMap.get(ticketId);
     carsMap.remove(ticketId);
     if (carId == null) return null;
-    Car car = parkingLots.get(parkingTicket.getParkingLotId()-1).getCar(parkingTicket.getPosition());
+    Car car = parkingLots.get(parkingTicket.getParkingLotId()-1).getCar(parkingTicket.getPosition()-1);
     return car;
   }
 

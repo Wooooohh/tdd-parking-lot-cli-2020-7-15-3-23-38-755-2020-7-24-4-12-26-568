@@ -22,7 +22,7 @@ public class ParkingLot {
     }
 
     public Car getCar(int index){
-        return cars.get(index-1);
+        return cars.get(index);
     }
 
     public int getCarsNum(){
