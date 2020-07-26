@@ -74,8 +74,8 @@ public class ParkingBoyTest {
     Car car1 = new Car("H001");
     Car car2 = new Car("H002");
     Car[] cars = {car1, car2};
-    ParkingTicket ticket1 = new ParkingTicket(car1.getCarId(), 0, 0);
-    ParkingTicket ticket2 = new ParkingTicket(car2.getCarId(), 0, 0);
+    ParkingTicket ticket1 = new ParkingTicket(car1.getCarId(), 0, 0, 0);
+    ParkingTicket ticket2 = new ParkingTicket(car2.getCarId(), 0, 0, 0);
 
     ParkingTicket[] tickets = {ticket1, ticket2};
     // when
@@ -94,7 +94,7 @@ public class ParkingBoyTest {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
-    ParkingTicket ticket = new ParkingTicket("wrong ticket", 0, 0);
+    ParkingTicket ticket = new ParkingTicket("wrong ticket", 0, 0, 0);
 
     // when
     Car car = parkingBoy.fetch(ticket);
@@ -162,7 +162,7 @@ public class ParkingBoyTest {
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLots.add(parkingLot1);
     parkingBoy.park(new Car("H001"));
-    ParkingTicket parkingTicket = new ParkingTicket("wrong ticket", 0, 0);
+    ParkingTicket parkingTicket = new ParkingTicket("wrong ticket", 0, 0, 0);
     parkingBoy.fetch(parkingTicket);
 
     // then
@@ -386,8 +386,13 @@ public class ParkingBoyTest {
   @Test
   public void should_return_parkingboy_id_when_add_parking_boy_given_manager_and_parking_boy(){
     //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
     ParkingLotManager parkingLotManager = new ParkingLotManager();
-    ParkingBoy parkingBoy = new ParkingBoy();
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
     //when
     int result = parkingLotManager.addParkingBoy(parkingBoy);
@@ -399,8 +404,13 @@ public class ParkingBoyTest {
   @Test
   public void should_return_ticket_when_call_boy_park_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_car(){
     //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
     ParkingLotManager parkingLotManager = new ParkingLotManager();
-    ParkingBoy parkingBoy = new ParkingBoy();
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     parkingLotManager.addParkingBoy(parkingBoy);
     Car car = new Car("H001");
 
@@ -409,5 +419,25 @@ public class ParkingBoyTest {
 
     //then
     assertNotEquals(null, result);
+  }
+
+  @Test
+  public void should_return_the_car_when_call_boy_fetch_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_ticket(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
+    ParkingLotManager parkingLotManager = new ParkingLotManager();
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+    parkingLotManager.addParkingBoy(parkingBoy);
+    Car car = new Car("H001");
+    ParkingTicket parkingTicket = parkingLotManager.callBoyParkCar(car);
+    //when
+    Car result = parkingLotManager.callBoyFetchCar(parkingTicket);
+
+    //then
+    assertNotEquals(car.getCarId(), result.getCarId());
   }
 }
