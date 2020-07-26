@@ -21,6 +21,10 @@ public class ParkingLot {
         this.cars.add(car);
     }
 
+    public Car getCar(int index){
+        return cars.get(index-1);
+    }
+
     public int getCarsNum(){
         return cars.size();
     }
