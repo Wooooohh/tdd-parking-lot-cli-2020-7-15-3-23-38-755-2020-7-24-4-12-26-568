@@ -21,6 +21,14 @@ public class ParkingLotManager{
     }
 
     public ParkingTicket callBoyParkCar(Car car) {
-        return parkingBoys.get(0).park(car);
+        ParkingBoy parkingBoy = parkingBoys.get(0);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        return parkingTicket;
+    }
+
+    public Car callBoyFetchCar(ParkingTicket parkingTicket) {
+        ParkingBoy parkingBoy = parkingBoys.get(0);
+        Car car = parkingBoy.fetch(parkingTicket);
+        return car;
     }
 }

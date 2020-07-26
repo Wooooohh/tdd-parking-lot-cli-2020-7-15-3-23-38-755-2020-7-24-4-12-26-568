@@ -422,7 +422,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  public void should_return_the_car_when_call_boy_fetch_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_ticket(){
+  public void should_return_the_car_when_call_boy_fetch_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_ticket_and_car(){
     //given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
     ParkingLot parkingLot2 = new ParkingLot(2, 10);
@@ -438,6 +438,6 @@ public class ParkingBoyTest {
     Car result = parkingLotManager.callBoyFetchCar(parkingTicket);
 
     //then
-    assertNotEquals(car.getCarId(), result.getCarId());
+    assertEquals(car.getCarId(), result.getCarId());
   }
 }

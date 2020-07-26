@@ -8,10 +8,13 @@ public class ParkingTicket {
 
   private int position;
 
-  public ParkingTicket(String carId, int parkingLotId, int position) {
+  private int parkingBoyId;
+
+  public ParkingTicket(String carId, int parkingLotId, int position, int parkingBoyId) {
     ticketId = carId + "park" + parkingLotId;
     this.parkingLotId = parkingLotId;
     this.position = position;
+    this.parkingBoyId = parkingBoyId;
   }
 
   public String getTicketId() {
@@ -36,5 +39,13 @@ public class ParkingTicket {
 
   public void setPosition(int position) {
     this.position = position;
+  }
+
+  public int getParkingBoyId() {
+    return parkingBoyId;
+  }
+
+  public void setParkingBoyId(int parkingBoyId) {
+    this.parkingBoyId = parkingBoyId;
   }
 }

@@ -13,10 +13,6 @@ public class ParkingBoy {
 
   protected List<ParkingLot> parkingLots;
 
-  public ParkingBoy(){
-    parkingLots = new ArrayList<>();
-  }
-
   public ParkingBoy(List<ParkingLot> parkingLots) {
     this.parkingLots = parkingLots;
     carsMap = new HashMap<>();
@@ -71,7 +67,7 @@ public class ParkingBoy {
     public ParkingTicket putCar(ParkingLot parkingLot, Car car){
       String carId = car.getCarId();
       parkingLot.putCar(car);
-      ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), parkingLot.getPosition());
+      ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), parkingLot.getPosition(), 0);
       String ticketId = parkingTicket.getTicketId();
       carsMap.put(ticketId, carId);
       return parkingTicket;
