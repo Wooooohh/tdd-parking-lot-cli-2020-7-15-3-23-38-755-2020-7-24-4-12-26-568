@@ -23,13 +23,8 @@ public class SuperSmartParkingBoy extends ParkingBoy{
                     }
                 }
             }
-            String carId = car.getCarId();
             ParkingLot maxEmptyPositionLot = parkingLots.get(maxRateLotIndex);
-            maxEmptyPositionLot.putCar(car);
-            ParkingTicket parkingTicket = new ParkingTicket(carId, maxEmptyPositionLot.getLotId(), maxEmptyPositionLot.getPosition());
-            String ticketId = parkingTicket.getTicketId();
-            carsMap.put(ticketId, carId);
-            return parkingTicket;
+            return putCar(maxEmptyPositionLot, car);
         }
         return null;
     }

@@ -67,4 +67,14 @@ public class ParkingBoy {
             return "Not enough position.";
         return null;
     }
+
+    public ParkingTicket putCar(ParkingLot parkingLot, Car car){
+      String carId = car.getCarId();
+      parkingLot.putCar(car);
+      ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), parkingLot.getPosition());
+      String ticketId = parkingTicket.getTicketId();
+      carsMap.put(ticketId, carId);
+      return parkingTicket;
+
+    }
 }
