@@ -422,6 +422,31 @@ public class ParkingBoyTest {
   }
 
   @Test
+  public void should_return_ticket_with_boy_id_is_2_when_call_boy_park_car_given_manager_with_two_parking_boy_in_parking_boy_list_and_boy1_is_full_and_car(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 1);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots1 = new ArrayList<>();
+    List<ParkingLot> parkingLots2 = new ArrayList<>();
+    parkingLots1.add(parkingLot1);
+    parkingLots2.add(parkingLot2);
+    ParkingLotManager parkingLotManager = new ParkingLotManager();
+    ParkingBoy parkingBoy1 = new ParkingBoy(parkingLots1);
+    ParkingBoy parkingBoy2 = new ParkingBoy(parkingLots2);
+    parkingLotManager.addParkingBoy(parkingBoy1);
+    parkingLotManager.addParkingBoy(parkingBoy2);
+    Car car1 = new Car("H001");
+    Car car2 = new Car("H001");
+    parkingLotManager.callBoyParkCar(car1);
+
+    //when
+    ParkingTicket result = parkingLotManager.callBoyParkCar(car2);
+
+    //then
+    assertNotEquals(2, result.getParkingBoyId());
+  }
+
+  @Test
   public void should_return_the_car_when_call_boy_fetch_car_given_manager_with_one_parking_boy_in_parking_boy_list_and_ticket_and_car(){
     //given
     ParkingLot parkingLot1 = new ParkingLot(1, 10);
