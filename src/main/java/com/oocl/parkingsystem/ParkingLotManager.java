@@ -21,6 +21,6 @@ public class ParkingLotManager{
     }
 
     public ParkingTicket callBoyParkCar(Car car) {
-        return null;
+        return parkingBoys.get(0).park(car);
     }
 }
