@@ -443,7 +443,7 @@ public class ParkingBoyTest {
     ParkingTicket result = parkingLotManager.callBoyParkCar(car2);
 
     //then
-    assertNotEquals(2, result.getParkingBoyId());
+    assertEquals(2, result.getParkingBoyId());
   }
 
   @Test

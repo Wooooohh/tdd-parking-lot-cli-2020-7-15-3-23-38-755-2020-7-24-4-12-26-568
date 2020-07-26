@@ -1,11 +1,12 @@
 package com.oocl.parkingsystem;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
+
+  private int boyId;
 
   protected Map<String, String> carsMap;
 
@@ -67,10 +68,21 @@ public class ParkingBoy {
     public ParkingTicket putCar(ParkingLot parkingLot, Car car){
       String carId = car.getCarId();
       parkingLot.putCar(car);
-      ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), parkingLot.getPosition(), 0);
+      ParkingTicket parkingTicket = new ParkingTicket(carId, parkingLot.getLotId(), parkingLot.getPosition(), boyId);
       String ticketId = parkingTicket.getTicketId();
       carsMap.put(ticketId, carId);
       return parkingTicket;
-
     }
+
+  public int getBoyId() {
+    return boyId;
+  }
+
+  public void setBoyId(int boyId) {
+    this.boyId = boyId;
+  }
+
+  public boolean isLotsFull() {
+    return carsMap.size() >= totalCapacity;
+  }
 }
