@@ -317,4 +317,25 @@ public class ParkingBoyTest {
     assertEquals(2, result.getParkingLotId());
   }
 
+  @Test
+  public void should_return_ticket_with_right_lot_information_when_park_given_smart_parking_boy_and_car_and_two_parking_lot_and_two_car_in_different_lot(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
+    Car car1 = new Car("H001");
+    Car car2 = new Car("H002");
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+    smartParkingBoy.park(car1);
+    smartParkingBoy.park(car2);
+    Car car3 = new Car("H003");
+
+    //when
+    ParkingTicket result = smartParkingBoy.park(car3);
+
+    //then
+    assertEquals(1, result.getParkingLotId());
+  }
 }
