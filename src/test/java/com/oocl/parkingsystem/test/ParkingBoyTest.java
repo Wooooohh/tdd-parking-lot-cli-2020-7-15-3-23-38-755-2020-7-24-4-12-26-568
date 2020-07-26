@@ -316,4 +316,5 @@ public class ParkingBoyTest {
     //then
     assertEquals(2, result.getParkingLotId());
   }
+
 }
