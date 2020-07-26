@@ -16,6 +16,7 @@ public class ParkingLotManager{
     }
 
     public int addParkingBoy(ParkingBoy parkingBoy) {
-        return 0;
+        parkingBoys.add(parkingBoy);
+        return parkingBoys.size();
     }
 }
