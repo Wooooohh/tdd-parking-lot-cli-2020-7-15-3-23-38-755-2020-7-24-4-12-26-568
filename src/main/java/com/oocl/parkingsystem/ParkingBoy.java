@@ -6,11 +6,11 @@ import java.util.Map;
 
 public class ParkingBoy {
 
-  Map<String, String> carsMap;
+  protected Map<String, String> carsMap;
 
-  int totalCapacity;
+  protected int totalCapacity;
 
-  private List<ParkingLot> parkingLots;
+  protected List<ParkingLot> parkingLots;
 
   public ParkingBoy(List<ParkingLot> parkingLots) {
     this.parkingLots = parkingLots;

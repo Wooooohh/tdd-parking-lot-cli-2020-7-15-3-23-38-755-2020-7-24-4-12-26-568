@@ -1,23 +1,12 @@
 package com.oocl.parkingsystem;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class SmartParkingBoy {
+public class SmartParkingBoy extends ParkingBoy{
 
-    Map<String, String> carsMap;
-
-    int totalCapacity;
-
-    private List<ParkingLot> parkingLots;
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
-        carsMap = new HashMap<>();
-        for(ParkingLot parkingLot : parkingLots){
-            totalCapacity += parkingLot.getCapacity();
-        }
+        super(parkingLots);
     }
 
     public ParkingTicket park(Car car) {
@@ -44,4 +33,5 @@ public class SmartParkingBoy {
         }
         return null;
     }
+
 }

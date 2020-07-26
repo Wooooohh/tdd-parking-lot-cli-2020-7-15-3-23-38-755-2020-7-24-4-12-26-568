@@ -338,4 +338,26 @@ public class ParkingBoyTest {
     //then
     assertEquals(1, result.getParkingLotId());
   }
+
+
+  //rate = (positions available / capacity).
+  @Test
+  public void should_return_ticket_with_lot2_when_park_given_super_smart_parking_boy_and_car_and_two_parking_lot_and_lot2_rate_is_large(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 5);
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    parkingLots.add(parkingLot1);
+    parkingLots.add(parkingLot2);
+    Car car1 = new Car("H001");
+    SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+    superSmartParkingBoy.park(car1);
+    Car car2 = new Car("H002");
+
+    //when
+    ParkingTicket result = superSmartParkingBoy.park(car2);
+
+    //then
+    assertEquals(2, result.getParkingLotId());
+  }
 }
