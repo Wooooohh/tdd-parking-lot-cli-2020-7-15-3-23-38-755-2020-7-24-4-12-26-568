@@ -440,4 +440,27 @@ public class ParkingBoyTest {
     //then
     assertEquals(car.getCarId(), result.getCarId());
   }
+
+  @Test
+  public void should_return_the_car_when_call_boy_fetch_car_given_manager_with_multiple_parking_boy_in_parking_boy_list_and_ticket_and_car(){
+    //given
+    ParkingLot parkingLot1 = new ParkingLot(1, 10);
+    ParkingLot parkingLot2 = new ParkingLot(2, 10);
+    List<ParkingLot> parkingLots1 = new ArrayList<>();
+    List<ParkingLot> parkingLots2 = new ArrayList<>();
+    parkingLots1.add(parkingLot1);
+    parkingLots2.add(parkingLot2);
+    ParkingLotManager parkingLotManager = new ParkingLotManager();
+    ParkingBoy parkingBoy1 = new ParkingBoy(parkingLots1);
+    ParkingBoy parkingBoy2 = new ParkingBoy(parkingLots2);
+    parkingLotManager.addParkingBoy(parkingBoy1);
+    parkingLotManager.addParkingBoy(parkingBoy2);
+    Car car = new Car("H001");
+    ParkingTicket parkingTicket = parkingLotManager.callBoyParkCar(car);
+    //when
+    Car result = parkingLotManager.callBoyFetchCar(parkingTicket);
+
+    //then
+    assertEquals(car.getCarId(), result.getCarId());
+  }
 }
